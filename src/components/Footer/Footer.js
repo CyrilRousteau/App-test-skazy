@@ -24,8 +24,16 @@ const Footer = () => {
         <div>
             <h2>Liens utiles</h2>
             <a href = "#customers">Clients</a>
-            <a href = "#rooms">Gîtes</a>
+            <a href = "#rooms">Chambres</a>
             <a href = "#chekinDate">Reservation</a>
+            <a href = "#header">Retour à l'accueil</a>
+        </div>
+        <div>
+            <h2>Horaires</h2>
+            <p>Ouvert du mardi au dimanche et jours feriés</p>
+            <p>Fermé le lundi</p>
+            <p>Check-in : 14h</p>
+            <p>Check-out : 11h</p>
         </div>
 
         <div>
@@ -41,7 +49,7 @@ const Footer = () => {
                     <i className = "fas fa-map-marker-alt"></i>
                 </span>
                 <span>
-                   5 rue des flambioyants 98000 Boulouparis, Nouvelle-Caledonie
+                   5 rue des flamboyants 98000 Boulouparis, Nouvelle-Caledonie
                 </span>
             </div>
             <div className = "contact-item">

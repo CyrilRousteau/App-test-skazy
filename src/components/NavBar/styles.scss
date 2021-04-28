@@ -46,10 +46,6 @@
 .navbar li a:hover{
   padding-left: 12px;
 }
-.sign-up, .log-in{
-  background: var(--yellow);
-  color: #fff;
-}
 @media(max-width: 400px){
   .sidenav{
       width: 100vw;
@@ -80,6 +76,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
+  & img{
+    width:120px;
+  }
 }
 .head-top span{
   cursor: pointer;

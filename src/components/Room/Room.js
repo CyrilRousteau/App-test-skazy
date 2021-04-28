@@ -3,7 +3,12 @@ import "./styles.scss";
 import  img4  from "../../assets/images/img4.jpg";
 import  img5  from "../../assets/images/img5.jpg";
 import  img6  from "../../assets/images/img6.jpg";
-
+import yourt1 from "../../assets/images/yourt1.jpg";
+import yourt2 from "../../assets/images/yourt2.jpg";
+import caban1 from "../../assets/images/caban1.png";
+import caban2 from "../../assets/images/caban2.png";
+import safari1 from "../../assets/images/safari1.jpeg";
+import safari2 from "../../assets/images/safari2.jpeg";
 
 const Room = () => {
   return (
@@ -12,10 +17,9 @@ const Room = () => {
         <h2>CHAMBRES</h2>
     </div>
     <div className = "rooms-container">
-        {/* <!-- single room --> */}
         <article className = "room">
             <div className = "room-image">
-                <img src = {img4} alt = "room image"></img>
+                <img src = {img4} alt = "yourte mongole"></img>
             </div>
             <div className = "room-text">
                 <h3>Yourte mongole</h3>
@@ -41,14 +45,17 @@ const Room = () => {
                 <p className = "rate">
                     <span>7000 fr /</span> Par Nuit le week-end
                 </p>
-                <button type = "button" className = "btn">réservez maintenant</button>
+                <div className="pictures">
+                    <img src={yourt1} alt="chambre d une yourte" />
+                    <img src={yourt2} alt="chambre d une yourte" />
+                </div>
+                
+                <button type = "button" className = "btn"><a href="#book">réservez maintenant</a></button>
             </div>
         </article>
-        {/* <!-- end of single room --> */}
-        {/* <!-- single room --> */}
         <article className = "room">
             <div className = "room-image">
-                <img src = {img6} alt = "room image"></img>
+                <img src = {img6} alt = "tente safari"></img>
             </div>
             <div className = "room-text">
                 <h3>Tente Safari</h3>
@@ -74,14 +81,16 @@ const Room = () => {
                 <p className = "rate">
                     <span>7000 fr /</span> Par Nuit le week-end
                 </p>
-                <button type = "button" className = "btn">réservez maintenant</button>
-            </div>
+                <div className="pictures">
+                    <img src={safari1} alt="chambre safari lit double" />
+                    <img src={safari2} alt="chambre safari lit simple" />
+                </div>
+                <button type = "button" className = "btn"><a href="#book">réservez maintenant</a></button>
+                </div>
         </article>
-        {/* <!-- end of single room -->
-        <!-- single room --> */}
         <article className = "room">
             <div className = "room-image">
-                <img src = {img5} alt = "room image"></img>
+                <img src = {img5} alt = "cabane perchée dans les arbres"></img>
             </div>
             <div className = "room-text">
                 <h3>Cabane O Perchée</h3>
@@ -107,10 +116,13 @@ const Room = () => {
                 <p className = "rate">
                     <span>7000 fr /</span> Par Nuit le week-end
                 </p>
-                <button type = "button" className = "btn">réservez maintenant</button>
+                <div className="pictures">
+                    <img src={caban1} alt="chambre cabane lit double" />
+                    <img src={caban2} alt="chambre cabane lit simple" />
+                </div>
+                <button type = "button" className = "btn"><a href="#book">réservez maintenant</a></button>
             </div>
         </article>
-        {/* <!-- end of single room --> */}
     </div>
 </section>
 

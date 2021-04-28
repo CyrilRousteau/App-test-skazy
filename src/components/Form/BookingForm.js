@@ -43,7 +43,7 @@ function submit(e){
 }
   
   return (
-    <div className = "book">
+    <div className = "book" id="book">
 
     <form
      className = "book-form"
@@ -137,7 +137,7 @@ function submit(e){
               type = "text" 
               id = "firstName" 
               name="firstName" 
-              placeholder="nom ou prénom"
+              placeholder="Nom"
               onChange={(e) => handle(e)}
               value={data.firstName}
               required
@@ -177,16 +177,11 @@ function submit(e){
               value={data.message}
             />
         </div>
-        {/* <div className = "form-item">
-            <label htmlFor = "rooms">Rooms: </label>
-            <input type = "number" min = "1" value = "1" id = "rooms"></input>
-        </div> */}
         <div className = "form-item">
             <input 
             type = "submit" 
             className = "btn" 
             value = "Réserver"
-            // onClick={handleSubmit}
             />
         </div>
     </form>
