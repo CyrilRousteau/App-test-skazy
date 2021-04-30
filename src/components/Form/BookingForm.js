@@ -1,53 +1,110 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import axios from "axios";
 import "./styles.scss";
 
 
 const BookingForm = () => {
 
-const url ="http://localhost:8000/api/form/Create"
-const [data, setData] = useState({
-  chekinDate:"",
-  chekoutDate:"",
-  adult:"",
-  children:"",
-  type:"",
-  firstName:"",
-  email:"",
-  tel:"",
-  message:"",
-})
+// const url ="http://localhost:8000/api/form/Create"
+const [data, setData] = useState(
+  {
+      chekinDate:"",
+      chekoutDate:"",
+      adult:"",
+      children:"",
+      type:"  ",
+      firstName:"",
+      email:"",
+      tel:"",
+      message:""
+}
+)
+
 function handle(e){
     const newdata={...data}
     newdata[e.target.id] = e.target.value
     setData(newdata)
-    console.log(newdata)
+    // console.log(newdata)
 }
 
-function submit(e){
+const handleSubmit = (e) => {
+
   e.preventDefault();
-  Axios.post(url,{
-    chekinDate:data.chekinDate,
-    chekoutDate:data.chekoutDate,
-    adult:data.adult,
-    children:data.children,
-    type:data.type,
-    firstName:data.firstName,
-    email:data.email,
-    tel:data.tel,
-    message:data.message,
-  })
-  .then(res =>{
-    console.log(res.data)
-  })
+
+    const bookForm = { 
+      chekinDate,
+      chekoutDate,
+      adult,
+      children,
+      type,
+      firstName,
+      email,
+      tel,
+      message
+    };
+
+    axios.post('http://localhost:4000/app/form', bookForm)
+      .then(response => console.log(response.data))
+
+    // this.setState({
+    //   chekinDate:"",
+    //   chekoutDate:"",
+    //   adult:"",
+    //   children:"",
+    //   type:"  ",
+    //   firstName:"",
+    //   email:"",
+    //   tel:"",
+    //   message:""
+    // })
+
+  // fetch('http://localhost:8000/forms',{
+  //   method: 'POST',
+  //   headers: {"Content-Type": "application/json"},
+  //   body: JSON.stringify(bookForm)
+  // }).then(() => {
+  //   console.log('new form added');
+  // })
 }
+
+// useEffect(() => {
+//   fetch('http://localhost:8000/forms')
+//     .then(res => {
+//       return res.json()
+//     })
+//     .then(data => {
+//       setData(data);
+//     });
+
+// }, []);
+
+
+
+// function submit(e){
+//   e.preventDefault();
+//   Axios.post(url,{
+//     chekinDate:data.chekinDate,
+//     chekoutDate:data.chekoutDate,
+//     adult:data.adult,
+//     children:data.children,
+//     type:data.type,
+//     firstName:data.firstName,
+//     email:data.email,
+//     tel:data.tel,
+//     message:data.message,
+//   })
+//   .then(res =>{
+//     console.log(res.data)
+//   })
+// }
   
   return (
     <div className = "book" id="book">
 
     <form
      className = "book-form"
-     onSubmit={(e)=>submit(e)}
+     onSubmit={(e)=>handleSubmit(e)}
      >
         
         <div className = "form-item">
@@ -58,7 +115,7 @@ function submit(e){
               name="chekinDate" 
               onChange={(e) => handle(e)}
               value={data.chekinDate}
-              required
+              // required
             />
         </div>
         <div className = "form-item">
@@ -69,7 +126,7 @@ function submit(e){
               name="chekoutDate" 
               onChange={(e) => handle(e)}
               value={data.chekoutDate}
-              required
+              // required
             />
         </div>
         <div className = "form-item">
@@ -83,7 +140,7 @@ function submit(e){
               name="adult" 
               onChange={(e) => handle(e)}
               value={data.adult}
-              required
+              // required
             />
         </div>
 
@@ -98,7 +155,7 @@ function submit(e){
               name="children" 
               onChange={(e) => handle(e)}
               value={data.children}
-              required
+              // required
             />
         </div>
         
@@ -109,23 +166,23 @@ function submit(e){
               id = "type" 
               name="type" 
               placeholder="Choisissez votre logment"
+              value={data.type}
               onChange={(e) => handle(e)}
-              
-              required
+              // required
               >
-                  <option 
+                  {/* <option 
                   value="">--Choisissez votre logement--
-                  </option>
+                  </option> */}
                   <option 
-                  value= {data.type} 
+                  value= "Yourte mongole" 
                   >Yourte mongole
                   
                   </option>
                   <option 
-                  value={data.type}>Tente safari
+                  value="Tente safari">Tente safari
                   </option>
                   <option 
-                  value={data.type}>Cabane O Perchée
+                  value="Cabane O Perchée">Cabane O Perchée
                   </option>
 
               </select>
@@ -184,6 +241,7 @@ function submit(e){
             value = "Réserver"
             />
         </div>
+       
     </form>
 
 </div>

@@ -1,10 +1,10 @@
 // == Import npm
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch }from 'react-router-dom';
 import Customers from '../Customers/Customers';
 // import Error from '../Error/Error';
 import Footer from '../Footer/Footer';
-import BookingForm from '../Form/BookingForm';
+// import BookingForm from '../Form/BookingForm';
+import BookingForms from '../Forms/BookingForms';
 import NavBar from '../NavBar/NavBar';
 import Room from '../Room/Room';
 import Service from '../Service/Service';
@@ -16,16 +16,15 @@ import './styles.scss';
 const App = () => (
   <div className="app">
   
-    <Router>
       
         <NavBar /> 
         <Service /> 
-        <BookingForm /> 
+        {/* <BookingForm />  */}
+        <BookingForms />
         <Room /> 
         <Customers/>
         <Footer />
       
-    </Router>    
   
   </div>
 );
