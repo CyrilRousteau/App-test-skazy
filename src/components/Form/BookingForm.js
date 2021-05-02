@@ -221,6 +221,7 @@ const handleSubmit = (e) => {
               placeholder="Entrez votre numéro de téléphone"
               onChange={(e) => handle(e)}
               value={data.tel}
+              required
             />
         </div>
         <div className = "form-item">
@@ -232,6 +233,7 @@ const handleSubmit = (e) => {
               placeholder="Ajouter un message"
               onChange={(e) => handle(e)}
               value={data.message}
+              required
             />
         </div>
         <div className = "form-item">

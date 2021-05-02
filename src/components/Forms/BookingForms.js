@@ -1,118 +1,153 @@
 import React, { Component } from 'react';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import Modal from 'react-modal';
 import axios from "axios";
 import "./styles.scss";
+import 'react-toastify/dist/ReactToastify.css';
 
+
+toast.configure()
 
 class BookingForms extends Component {
 
-  
+
+
   constructor(){
+    
     super()
-        this.state = {
-          chekinDate:"",
-          chekoutDate:"",
-          adult:"",
-          children:"",
-          type:"  ",
-          firstName:"",
-          email:"",
-          tel:"",
-          message:""
-        }
-        this.changeChekinDate = this.changeChekinDate.bind(this)
-        this.changeChekoutDate = this.changeChekoutDate.bind(this)
-        this.changeAdult = this.changeAdult.bind(this)
-        this.changeChildren = this.changeChildren.bind(this)
-        this.changeType = this.changeType.bind(this)
-        this.changeFirstName = this.changeFirstName.bind(this)
-        this.changeEmail = this.changeEmail.bind(this)
-        this.changeTel = this.changeTel.bind(this)
-        this.changeMessage = this.changeMessage.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
+    this.state = {
+      chekinDate:"",
+      chekoutDate:"",
+      adult:"",
+      children:"",
+      type:"  ",
+      firstName:"",
+      email:"",
+      tel:"",
+      message:"",
+      isActive: false,
+    }
+    this.changeChekinDate = this.changeChekinDate.bind(this)
+    this.changeChekoutDate = this.changeChekoutDate.bind(this)
+    this.changeAdult = this.changeAdult.bind(this)
+    this.changeChildren = this.changeChildren.bind(this)
+    this.changeType = this.changeType.bind(this)
+    this.changeFirstName = this.changeFirstName.bind(this)
+    this.changeEmail = this.changeEmail.bind(this)
+    this.changeTel = this.changeTel.bind(this)
+    this.changeMessage = this.changeMessage.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    
+  }
 
-      }
-      
-      changeChekinDate(e){
-        this.setState({
-          chekinDate:e.target.value
-        })
-      }
-      changeChekoutDate(e){
-        this.setState({
-          chekoutDate:e.target.value
-        })
-      }
-      changeAdult(e){
-        this.setState({
-          adult:e.target.value
-        })
-      }
-      changeChildren(e){
-        this.setState({
-          children:e.target.value
-        })
-      }
-      changeType(e){
-        this.setState({
-          type:e.target.value
-        })
-      }
-      changeFirstName(e){
-        this.setState({
-          firstName:e.target.value
-        })
-      }
-      changeEmail(e){
-        this.setState({
-          email:e.target.value
-        })
-      }
-      changeTel(e){
-        this.setState({
-          tel:e.target.value
-        })
-      }
-      changeMessage(e){
-        this.setState({
-          message:e.target.value
-        })
-      }
-      onSubmit(event){
-        event.preventDefault()
+  toastOnClik(){
+    toast.success('Merci ! Les détails de votre réservation vous serot envoyés par mail !', {
+      position: "top-center",
+      autoClose: 3500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
 
-        const bookForm = {
-          chekinDate:this.state.chekinDate,
-          chekoutDate:this.state.chekoutDate,
-          adult:this.state.adult,
-          children:this.state.children,
-          type:this.state.type,
-          firstName:this.state.firstName,
-          email:this.state.email,
-          tel:this.state.tel,
-          message:this.state.message
-        }
-        axios.post('http://localhost:4000/app/form', bookForm)
-        .then(response => console.log(response.data))
+  componentDidMount(){
+    Modal.setAppElement('body');
+  }
+ 
+  toggleModal = () => {
+      this.setState({
+        isActive:!this.state.isActive
+      })
+  }
+  
+  changeChekinDate(e){
+    this.setState({
+      chekinDate:e.target.value
+    })
+  }
+  changeChekoutDate(e){
+    this.setState({
+      chekoutDate:e.target.value
+    })
+  }
+  changeAdult(e){
+    this.setState({
+      adult:e.target.value
+    })
+  }
+  changeChildren(e){
+    this.setState({
+      children:e.target.value
+    })
+  }
+  changeType(e){
+    this.setState({
+      type:e.target.value
+    })
+  }
+  changeFirstName(e){
+    this.setState({
+      firstName:e.target.value
+    })
+  }
+  changeEmail(e){
+    this.setState({
+      email:e.target.value
+    })
+  }
+  changeTel(e){
+    this.setState({
+      tel:e.target.value
+    })
+  }
+  changeMessage(e){
+    this.setState({
+      message:e.target.value
+    })
+  }
+  onSubmit(e){
+    e.preventDefault()
+    
+    const bookForm = {
+      chekinDate:this.state.chekinDate,
+      chekoutDate:this.state.chekoutDate,
+      adult:this.state.adult,
+      children:this.state.children,
+      type:this.state.type,
+      firstName:this.state.firstName,
+      email:this.state.email,
+      tel:this.state.tel,
+      message:this.state.message
+    }
 
-        this.setState({
-          chekinDate:"",
-          chekoutDate:"",
-          adult:"",
-          children:"",
-          type:"  ",
-          firstName:"",
-          email:"",
-          tel:"",
-          message:""
-        })
+    
+    
+    
+    axios.post('http://localhost:4000/app/form', bookForm)
+    .then(response => console.log(response.data))
+    
+    this.setState({
+      chekinDate:"",
+      chekoutDate:"",
+      adult:"",
+      children:"",
+      type:"  ",
+      firstName:"",
+      email:"",
+      tel:"",
+      message:""
+    })
+    
+  }
 
-      }
-      
-      render() {
-      
+  render() {
+
       return (
+
         <div className = "book" id="book">
+
 
       <form
        className = "book-form"
@@ -243,8 +278,42 @@ class BookingForms extends Component {
                 value={this.state.message}
               />
           </div>
+          
           <div className = "form-item">
-              <input 
+          <input
+              onClick = {this.toggleModal}
+              type = "button" 
+              className = "btn" 
+              id="open"
+              value = "Voir les détails de ma réservation"/>
+              
+          </div>
+
+         <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal} > 
+              <div className="formModal_container" id="formModal_container">
+                <div className="mod">
+                      <h2 className="formModal-title">
+                        Récapitulatif de réservation :
+                      </h2>
+                        <p className="formModal-recap">Bonjour <span className="spanName">{this.state.firstName}</span>, voici les détails de votre réservation : </p>
+                        <p className="formModal-recap">Date d'arrivée : {this.state.chekinDate}</p>
+                        <p className="formModal-recap">Date de départ : {this.state.chekoutDate}</p>
+                        <p className="formModal-recap">Nombre d'adulte : {this.state.adult}</p>
+                        <p className="formModal-recap">Nombre d'enfant : {this.state.children}</p>
+                        <p className="formModal-recap">Type de chambre : {this.state.type}</p>
+                        <p className="formModal-recap">Votre adresse mail : {this.state.email}</p>
+                        <p className="formModal-recap">Votre numéro de téléphone : {this.state.tel}</p>
+                        <p className="formModal-recap">Votre message : {this.state.message}</p>
+                        <button className = "form-item" id="close" onClick={this.toggleModal}>
+                            Retour à la page de réservation
+                        </button>
+                 </div> 
+              </div>
+            </Modal>   
+
+          <div className = "form-item">
+              <input
+              onClick={() =>this.toastOnClik()}
               type = "submit" 
               className = "btn" 
               value = "Réserver"
@@ -252,6 +321,7 @@ class BookingForms extends Component {
           </div>
          
       </form>
+     
   
   </div>
     )

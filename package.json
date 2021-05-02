@@ -53,6 +53,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-modal": "^3.13.1",
     "react-toastify": "^7.0.4"
   }
 }
